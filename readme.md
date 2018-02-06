@@ -106,3 +106,32 @@ html-webpack-plugin可以清理/dist文件夹
     }
   };
 ```
+
+## demo04
+
+### 使用sourcemap来追踪错误
+
+在webpack.config.js中添加
+```Javascript
+ devtool: 'inline-source-map' 
+ ```
+打包后观察浏览器的console信息可以看到报错信息
+
+### 使用 webpack-dev-server在代码发生变化后自动编译代码
+
+> npm install --save-dev webpack-dev-server
+在webpack.config.js中添加
+```Javascript
+  devServer: {
+    contentBase: './dist'
+  },
+```
+在package.json中添加
+``` Javascript
+  "scripts": {
+      "start": "webpack-dev-server --open",
+      "build": "webpack"
+  },
+```
+
+现在在文件中的修改会自动更新
