@@ -2,14 +2,16 @@
   "devDependencies": {
     "clean-webpack-plugin": "^0.1.18",
     "html-webpack-plugin": "^2.30.1",
+    "uglifyjs-webpack-plugin": "^1.1.8",
     "webpack": "^3.10.0",
+    "webpack-dev-server": "^2.11.1",
     "webpack-merge": "^4.1.1"
   },
   "dependencies": {
     "lodash": "^4.17.5"
   },
-   "scripts": {
+  "scripts": {
     "start": "webpack-dev-server --open --config webpack.dev.js",
     "build": "webpack --config webpack.prod.js"
-    }
+  }
 }

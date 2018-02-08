@@ -1,5 +1,6 @@
 # webpackdemos
-
+本demo是按照webpack中文官网文档分步搭建的，配合文档一起看最合适
+ [官方文档](https://doc.webpack-china.org/guides/)
 ## dem01
 
 > npm install lodash --save
