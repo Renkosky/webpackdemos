@@ -61,6 +61,7 @@ module: {
   }
 ```
 ## demo3
+[文档]()
 根据入口起点名称动态生成 bundle 名称
 ```Javascript
   module.exports = {
@@ -108,7 +109,8 @@ html-webpack-plugin可以清理/dist文件夹
   };
 ```
 
-## demo04
+## demo04 
+[文档](https://doc.webpack-china.org/guides/hot-module-replacement/)
 
 ### 使用sourcemap来追踪错误
 
@@ -118,7 +120,9 @@ html-webpack-plugin可以清理/dist文件夹
  ```
 打包后观察浏览器的console信息可以看到报错信息
 
-### 使用 webpack-dev-server在代码发生变化后自动编译代码
+### webpack-dev-server
+
+webpack-dev-server提供了一个简单的 web 服务器，并实时重新加载
 
 > npm install --save-dev webpack-dev-server
 在webpack.config.js中添加
@@ -136,3 +140,68 @@ html-webpack-plugin可以清理/dist文件夹
 ```
 
 现在在文件中的修改会自动更新 
+
+## demo05 生产环境构建 
+[文档](https://doc.webpack-china.org/guides/production/)
+
+### 拆分webpack配置
+安装 webpack-merg,拆分webpack配置
+> cnpm install --save-dev webpack-merg
+
+
+新建三个不同的webpcak配置文件
+
+ webpack.common.js<br>
+ webpack.dev.js<br>
+ webpack.prod.js
+ 
+### 修改npm scripts
+
+```javascript
+  "scripts": {
+    "start": "webpack-dev-server --open --config webpack.dev.js",
+    "build": "webpack --config webpack.prod.js"
+},
+
+```
+
+### 使用sourcemap
+
+```javascript
+/*webpack.prod.js*/
+
+  const merge = require('webpack-merge');
+  const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
+  const common = require('./webpack.common.js');
+
+  module.exports = merge(common, {
+    devtool: 'source-map',
+    plugins: [
+      new UglifyJSPlugin({
+        sourceMap: true
+      })
+    ]
+  })
+```
+
+### 指定环境
+```javascript
+//webpack.prod.js
+
++ const webpack = require('webpack');
+  const merge = require('webpack-merge');
+  const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
+  const common = require('./webpack.common.js');
+
+  module.exports = merge(common, {
+    devtool: 'source-map',
+    plugins: [
+      new UglifyJSPlugin({
+        sourceMap: true
+      }),
+      new webpack.DefinePlugin({
+        'process.env.NODE_ENV': JSON.stringify('production')
+      })
+    ]
+  })
+  ```
