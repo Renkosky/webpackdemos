@@ -2,7 +2,7 @@
 本demo是按照webpack中文官网文档分步搭建的，配合文档一起看最合适
  [官方文档](https://doc.webpack-china.org/guides/)
 ## dem01
-
+[起步](https://doc.webpack-china.org/guides/getting-started/)
 > npm install lodash --save
 
 entry/output: 
@@ -23,6 +23,7 @@ build with script
   
 ```
 ## dem02
+[管理资源](https://doc.webpack-china.org/guides/asset-management/)
 
 css/file/csv/xml loaders<br>
 
@@ -61,7 +62,8 @@ module: {
   }
 ```
 ## demo3
-[文档]()
+[管理输出](https://doc.webpack-china.org/guides/output-management/)~
+[开发](https://doc.webpack-china.org/guides/development/)
 根据入口起点名称动态生成 bundle 名称
 ```Javascript
   module.exports = {
@@ -110,7 +112,7 @@ html-webpack-plugin可以清理/dist文件夹
 ```
 
 ## demo04 
-[文档](https://doc.webpack-china.org/guides/hot-module-replacement/)
+[HRM](https://doc.webpack-china.org/guides/hot-module-replacement/)
 
 ### 使用sourcemap来追踪错误
 
@@ -142,7 +144,7 @@ webpack-dev-server提供了一个简单的 web 服务器，并实时重新加载
 现在在文件中的修改会自动更新 
 
 ## demo05 生产环境构建 
-[文档](https://doc.webpack-china.org/guides/production/)
+[生产环境](https://doc.webpack-china.org/guides/production/)
 
 ### 拆分webpack配置
 安装 webpack-merg,拆分webpack配置
@@ -171,7 +173,7 @@ webpack-dev-server提供了一个简单的 web 服务器，并实时重新加载
 /*webpack.prod.js*/
 
   const merge = require('webpack-merge');
-  const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
+  const UglifyJSPlugin = require('uglifyjs-webpack-plugin');//Treeshaking，用于删除上下文中的多余js代码
   const common = require('./webpack.common.js');
 
   module.exports = merge(common, {
@@ -188,7 +190,7 @@ webpack-dev-server提供了一个简单的 web 服务器，并实时重新加载
 ```javascript
 //webpack.prod.js
 
-+ const webpack = require('webpack');
+  const webpack = require('webpack');
   const merge = require('webpack-merge');
   const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
   const common = require('./webpack.common.js');
