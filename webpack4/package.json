@@ -1,0 +1,19 @@
+{
+    "private": true,
+    "devDependencies": {
+        "clean-webpack-plugin": "^3.0.0",
+        "css-loader": "^3.2.0",
+        "file-loader": "^4.2.0",
+        "html-webpack-plugin": "^3.2.0",
+        "lodash": "^4.17.15",
+        "style-loader": "^1.0.0",
+        "webpack": "^4.39.3",
+        "webpack-cli": "^3.3.8",
+        "webpack-dev-server": "^3.8.0"
+    },
+    "dependencies": {},
+    "scripts": {
+        "build": "webpack",
+        "start": "webpack-dev-server --open"
+    }
+}
